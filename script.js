@@ -102,3 +102,27 @@ function showAllProducts() {
     <h6>Filo: ${prod.filo}</h6><h6>Esche: ${prod.esche}</h6>
     `).join("")
 }
+
+function deleteAllProduct() {
+    const minut = []
+    const muli = []
+    const canne = []
+    const fili = []
+    const esc = []
+
+    const allProduct = [{
+        minuteria: minut,
+        mulinelli: muli,
+        canneDaPesca: canne,
+        filo: fili,
+        esche: esc
+    }]
+
+    localStorage.removeItem('minuteria')
+    localStorage.removeItem('mulinelli')
+    localStorage.removeItem('canneDaPesca')
+    localStorage.removeItem('filo')
+    localStorage.removeItem('esche')
+    document.getElementById("prodotti").innerHTML = ``
+
+}
