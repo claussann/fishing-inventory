@@ -20,6 +20,7 @@ function ModalProd({ show, handleClose }: ModalProps): any {
     const [size, setSize] = useState('');
     const [type, setType] = useState('');
     const [photo, setPhoto] = useState('');
+    const [id, setId] = useState(Date.now());
 
     const handleChangeItem = (e: React.ChangeEvent<HTMLInputElement>) => {
         setItem(e.target.value);
@@ -34,11 +35,12 @@ function ModalProd({ show, handleClose }: ModalProps): any {
         setPhoto(e.target.value);
     }
     const saveItem = () => {
-        dispatch(addItem({ item, size, type, photo }));
+        dispatch(addItem({ item, size, type, photo, id }));
         setItem('');
         setSize('');
         setType('');
         setPhoto('');
+        setId(Date.now());
         handleClose();
     }
     return (
