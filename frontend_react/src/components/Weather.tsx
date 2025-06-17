@@ -16,6 +16,7 @@ function Weather() {
     const [latitude, setLatitude] = useState(0)
     const [longitude, setLongitude] = useState(0)
     const [city, setCity] = useState<CityType>({ town: '', country: '', county: '' })
+    const [loading, setLoading] = useState(false)
 
     function getWeather() {
         if (!latitude || !longitude) {
@@ -27,6 +28,7 @@ function Weather() {
         }
     }
     async function dataWeather() {
+        setLoading(true)
         try {
             const data = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,sunrise,sunset,precipitation_probability_max&current=apparent_temperature&timezone=auto`)
             const weather = await data.json()
@@ -34,6 +36,8 @@ function Weather() {
             setWeather(weather)
         } catch (error) {
             alert(error)
+        } finally {
+            setLoading(false)
         }
         const dataCity = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`,
             {
@@ -84,6 +88,7 @@ function Weather() {
                 </div>
             </div>
             <div className="row">
+                {loading && <h5> <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</h5>}
                 <div className="col-12 text-center">
                     <h6>Temperature: {weather.current.apparent_temperature}</h6>
                     <h6>Precipitation Probability: {weather.daily.precipitation_probability_max[0]}</h6>
