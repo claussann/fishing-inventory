@@ -5,6 +5,7 @@ import Buttons from '../components/Buttons';
 import ModalProd from '../components/ModalProd';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Weather from '../components/Weather';
 
 function Home() {
     const [showModal, setShowModal] = useState(false);
@@ -24,8 +25,11 @@ function Home() {
                     <div className='col-12'>
                         <Buttons sx={{ width: '100%' }} onClick={() => setShowModal(true)}>Add Item</Buttons>
                     </div >
-                    <div className='col-12'>
+                    <div className='col-12 mt-1'>
                         <Buttons sx={{ width: '100%' }} onClick={() => openInventory()}>Open Inventory</Buttons>
+                    </div>
+                    <div className='row justify-content-center mt-3 m-2'>
+                        <Weather />
                     </div>
                     {showModal && <ModalProd show={showModal} handleClose={() => setShowModal(false)} />}
                 </div>

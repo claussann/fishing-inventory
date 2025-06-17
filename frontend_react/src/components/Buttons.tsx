@@ -1,7 +1,7 @@
 type ButtonProps = {
     children: string,
     onClick: () => void,
-    sx?: any
+    sx?: any,
 }
 
 function Buttons({ children, onClick, sx }: ButtonProps): any {
