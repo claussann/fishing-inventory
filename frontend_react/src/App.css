@@ -3,7 +3,14 @@ body {
     background-size: cover;
 }
 
-
+#inventory, #items, #emtpty {
+    background: rgba(0, 0, 0, 0.523);
+    color: lightseagreen
+}
+#productCard {
+    background: rgba(0, 0, 0, 0.241);
+    color: lightseagreen
+}
 @media screen and (min-width: 749px) {
 
     #home {

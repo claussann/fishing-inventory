@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
 
 type FishingType = {
     title: string;
@@ -62,15 +63,17 @@ function Inventory() {
     if (items.length === 0) {
         return (
             <div className="container">
-                <div className="row col-12 border border-secondary mt-3 p-3 bg-light">
-                    <div className='col-10 d-flex m-1 justify-content-center'>
-                        <h1 className='text-center'>Inventory</h1>
-                    </div>
-                    <div className='col-2 d-flex justify-content-end'>
-                        <Buttons onClick={goHome}>Go to Home</Buttons>
+                <div id='inventory' className="row border border-secondary m-1 mt-3 p-3">
+                    <div className='row d-flex m-1 justify-content-between'>
+                        <div className='col-10'>
+                            <h1 className='text-center'>Inventory</h1>
+                        </div>
+                        <div className='col-2 d-flex justify-content-end'>
+                            <Buttons id='button' onClick={goHome}>Go to Home</Buttons>
+                        </div>
                     </div>
                 </div>
-                <div className="row col-12 border border-secondary p-3 bg-light">
+                <div id='items' className="row border border-secondary m-1 p-3">
                     <h1 className='text-center'>Inventory is empty</h1>
                 </div>
             </div>
@@ -78,15 +81,17 @@ function Inventory() {
     } else {
         return (
             <div className="container">
-                <div className="row col-12 border border-secondary mt-3 p-3 bg-light">
-                    <div className='col-10 d-flex justify-content-center'>
-                        <h1 className='text-center'>Inventory</h1>
-                    </div>
-                    <div className='col-2 d-flex justify-content-end'>
-                        <Buttons onClick={goHome}>Go to Home</Buttons>
+                <div id='inventory' className="row border border-secondary m-1 mt-3 p-3">
+                    <div className='row d-flex justify-content-between'>
+                        <div className='col-10'>
+                            <h1 className='text-center'>Inventory</h1>
+                        </div>
+                        <div className='col-2 d-flex justify-content-end'>
+                            <Buttons id='button' onClick={goHome}>Go to Home</Buttons>
+                        </div>
                     </div>
                 </div>
-                <div className="row col-12 d-flex justify-content-center border border-secondary mt-2 p-3 bg-light">
+                <div id='items' className="row d-flex justify-content-center border border-secondary m-1 mt-2 p-3">
                     {items.map((item: any) => {
                         return <FishingCards onClick={() => deletItem(item.id)} key={item.id} title={item.item} type={item.type} size={item.size} photo={item.photo} id={item.id} />
                     })}

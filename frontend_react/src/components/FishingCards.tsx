@@ -1,6 +1,7 @@
 import Buttons from './Buttons';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../App.css';
 
 type cardPorps = {
     title: string
@@ -12,7 +13,7 @@ type cardPorps = {
 }
 function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
     return (
-        <div className="card m-2 p-2 bg-light border border-secondary d-flex justify-content-center" style={{ width: '18rem' }}>
+        <div id='productCard' className="card m-2 p-2 border border-secondary d-flex justify-content-center" style={{ width: '18rem' }}>
             <div className="d-flex justify-content-center">
                 {photo && <img src={photo} className="card-img-fluid" style={{ width: '80%', margin: '5px' }} alt={title} />}
             </div>
