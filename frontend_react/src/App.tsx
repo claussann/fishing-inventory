@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import LogoStarter from "./Pages/LogoStarter";
 
+import "./App.css";
+
 function App() {
   const [showLogo, setShowLogo] = useState(true);
   const navigate = useNavigate();

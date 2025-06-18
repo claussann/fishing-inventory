@@ -63,7 +63,7 @@ function Inventory() {
         return (
             <div className="container">
                 <div className="row col-12 border border-secondary mt-3 p-3 bg-light">
-                    <div className='col-10 d-flex justify-content-center'>
+                    <div className='col-10 d-flex m-1 justify-content-center'>
                         <h1 className='text-center'>Inventory</h1>
                     </div>
                     <div className='col-2 d-flex justify-content-end'>
