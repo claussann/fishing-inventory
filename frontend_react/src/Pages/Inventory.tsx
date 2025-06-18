@@ -18,7 +18,7 @@ function Inventory() {
     const navigate = useNavigate();
 
     const goHome = () => {
-        navigate('/')
+        navigate('/Home')
     }
 
     const product = [{

@@ -48,7 +48,11 @@ function Weather() {
         )
         const city = await dataCity.json()
         console.log(city.address)
-        setCity(city.address)
+        if (city.address){
+            setCity({ town: city.address.town, country: city.address.country, county: city.address.county })
+        } else {
+            setCity({ town: '', country: '', county: '' })
+        }
     }
 
     function getWeatherEmoji(code: number) {
@@ -91,9 +95,9 @@ function Weather() {
                 {loading && <h5> <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>Loading...</h5>}
                 <div className="col-12 text-center">
                     <h6>Temperature: {weather.current.apparent_temperature}</h6>
-                    <h6>Precipitation Probability: {weather.daily.precipitation_probability_max[0]}</h6>
+                    <h6>Precipitation Probability: {weather.daily.precipitation_probability_max[0]}%</h6>
                     <h6>Weather: {getWeatherEmoji(weather.daily.weathercode[0])}</h6>
-                    <h6>City:{city.town || ''} {city.country || ''} {city.county || ''}</h6>
+                    <h6>City:{city?.town || ''} {city?.country || ''} {city?.county || ''}</h6>
                 </div>
             </div>
         </div >
