@@ -1,0 +1,13 @@
+{
+  "name": "fishing-inventory-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "php -S localhost:8000 -t backend_php",
+    "frontend": "cd frontend_react && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
