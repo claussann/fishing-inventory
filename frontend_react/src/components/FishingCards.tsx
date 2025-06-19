@@ -19,7 +19,7 @@ function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
     return (
         <div id='productCard' className="card m-2 p-2 border border-secondary d-flex justify-content-center" style={{ width: '18rem' }}>
             <div className="d-flex justify-content-center">
-                {photo && <img src={photo} id='productImage' onClick={() => setShow(true)} className="card-img-fluid" style={{ width: '80%', margin: '5px' }} alt={title} />}
+                {photo && <img src={`http://localhost:8000/${photo}`} id='productImage' onClick={() => setShow(true)} className="card-img-fluid" style={{ width: '80%', margin: '5px' }} alt={title} />}
             </div>
             <div className="card-body text-center">
                 {title && <h5 className="card-title"> {title}</h5>}

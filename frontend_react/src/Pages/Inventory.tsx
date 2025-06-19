@@ -15,52 +15,44 @@ type FishingType = {
     id: number;
 }
 function Inventory() {
-    const [items, setItems] = useState<FishingType[]>([]);
+    const [product, setProduct] = useState<FishingType[]>([]);
     const navigate = useNavigate();
 
     const goHome = () => {
         navigate('/Home')
     }
 
-    const product = [{
-        title: 'Fishing Road',
-        type: 'SurfCasting',
-        size: '250 gr',
-        photo: 'https://m.media-amazon.com/images/I/51qcFM4HVTL._AC_UF894,1000_QL80_DpWeblab_.jpg',
-        id: 1
-    },
-    {
-        title: 'Baits',
-        type: 'Rapala',
-        size: '25 gr',
-        photo: 'https://www.rhodani.com/178801-large_default/shadow-rap-rapala.jpg',
-        id: 2
-    },
-    {
-        title: 'Fishing Line',
-        type: 'Fluorocarbon',
-        size: '0.20',
-        photo: 'https://www.boscolosport.com/media/d4/98/c4/1677748899/filo-berkley-trilene-fluorocarbon-1.jpeg',
-        id: 3
-    },
-    {
-        title: 'Fishing Reel',
-        type: 'Shimano',
-        size: '4000',
-        photo: 'https://blackhooksnc.com/wp-content/uploads/2022/10/1329.jpg',
-        id: 4
+    async function fetchItems() {
+        const data = await fetch('http://localhost:8000/upload_item.php')
+        const items = await data.json()
+        setProduct(items);
+        return items
     }
-    ]
 
     useEffect(() => {
-        setItems(product);
+        fetchItems()
     }, []);
 
-    const deletItem = (id: number) => {
-        const newItems = items.filter(item => item.id !== id);
-        setItems(newItems);
+    const deletItem = async (id: number) => {
+        try {
+            const data = await fetch('http://localhost:8000/upload_item.php', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id })
+            })
+            if (data.ok) {
+                alert('Item deleted')
+                setProduct(product.filter(item => item.id !== id));
+            } else {
+                alert('Item not deleted')
+            }
+        } catch (error) {
+            alert(error)
+        }
     }
-    if (items.length === 0) {
+    if (product.length === 0) {
         return (
             <div className="container">
                 <div id='inventory' className="row border border-secondary m-1 mt-3 p-3">
@@ -92,7 +84,7 @@ function Inventory() {
                     </div>
                 </div>
                 <div id='items' className="row d-flex justify-content-center border border-secondary m-1 mt-2 p-3">
-                    {items.map((item: any) => {
+                    {product.map((item: any) => {
                         return <FishingCards onClick={() => deletItem(item.id)} key={item.id} title={item.item} type={item.type} size={item.size} photo={item.photo} id={item.id} />
                     })}
                 </div>

@@ -43,10 +43,15 @@ function ModalProd({ show, handleClose }: ModalProps): any {
             formData.append("photo", photo);
         }
         try {
-            await fetch('http://localhost:8000/upload_item.php', {
+             const response  = await fetch('http://localhost:8000/upload_item.php', {
                 method: 'POST',
                 body: formData,
             })
+            if(response.ok){
+                alert('Item added')
+            } else {
+                alert('Item not added')
+            }
         } catch(error) {
             alert(error)
         }
