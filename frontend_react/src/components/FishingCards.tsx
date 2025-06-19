@@ -1,4 +1,7 @@
+import { useState } from 'react';
+
 import Buttons from './Buttons';
+import ModalPhoto from './ModalPhoto';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -12,10 +15,11 @@ type cardPorps = {
     onClick: () => void
 }
 function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
+    const [show, setShow] = useState(false);
     return (
         <div id='productCard' className="card m-2 p-2 border border-secondary d-flex justify-content-center" style={{ width: '18rem' }}>
             <div className="d-flex justify-content-center">
-                {photo && <img src={photo} className="card-img-fluid" style={{ width: '80%', margin: '5px' }} alt={title} />}
+                {photo && <img src={photo} id='productImage' onClick={() => setShow(true)} className="card-img-fluid" style={{ width: '80%', margin: '5px' }} alt={title} />}
             </div>
             <div className="card-body text-center">
                 {title && <h5 className="card-title"> {title}</h5>}
@@ -23,6 +27,7 @@ function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
                 {size && <p className="card-text">Size: {size}</p>}
                 <Buttons sx={{ width: '100%' }} onClick={onClick}>Delete</Buttons>
             </div>
+            {show && <ModalPhoto title={type} show={show} photo={photo} handleClose={() => setShow(false)} />}
         </div>
     )
 }
