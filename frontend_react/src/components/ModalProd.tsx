@@ -33,6 +33,26 @@ function ModalProd({ show, handleClose }: ModalProps): any {
         }
     }
 
+    
+    async function handleSave() {
+    const formData = new FormData();
+        formData.append("item", item);
+        formData.append("type", type);
+        formData.append("size", size);
+        if(photo){
+            formData.append("photo", photo);
+        }
+        try {
+            await fetch('http://localhost:8000/upload_item.php', {
+                method: 'POST',
+                body: formData,
+            })
+        } catch(error) {
+            alert(error)
+        }
+        handleClose()
+    }
+
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -53,7 +73,7 @@ function ModalProd({ show, handleClose }: ModalProps): any {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={() => {}} children="Save" />
+                <Button variant="secondary" onClick={handleSave} children="Save" />
                 <Button variant="secondary" onClick={handleClose} children="Close" />
             </Modal.Footer>
         </Modal>
