@@ -48,7 +48,9 @@ function ModalProd({ show, handleClose }: ModalProps): any {
                 body: formData,
             })
             if(response.ok){
+                const data = await response.json();
                 alert('Item added')
+                const photoPath = data.photo || '';
             } else {
                 alert('Item not added')
             }

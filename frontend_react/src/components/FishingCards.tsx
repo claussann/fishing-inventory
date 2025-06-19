@@ -11,7 +11,7 @@ type cardPorps = {
     type: string
     size: string
     photo: string
-    id: string
+    id: number
     onClick: () => void
 }
 function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
@@ -27,7 +27,7 @@ function FishingCards({ title, type, size, photo, id, onClick }: cardPorps) {
                 {size && <p className="card-text">Size: {size}</p>}
                 <Buttons sx={{ width: '100%' }} onClick={onClick}>Delete</Buttons>
             </div>
-            {show && <ModalPhoto title={type} show={show} photo={photo} handleClose={() => setShow(false)} />}
+            {show && <ModalPhoto  title={type} show={show} photo={photo} handleClose={() => setShow(false)} />}
         </div>
     )
 }

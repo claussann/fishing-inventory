@@ -3,6 +3,7 @@ import Buttons from '../components/Buttons';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -12,9 +13,10 @@ type FishingType = {
     type: string;
     size: string;
     photo: string;
-    id: number;
+    id: string | number;
 }
 function Inventory() {
+
     const [product, setProduct] = useState<FishingType[]>([]);
     const navigate = useNavigate();
 
@@ -40,7 +42,6 @@ function Inventory() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id })
             })
             if (data.ok) {
                 alert('Item deleted')

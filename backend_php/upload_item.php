@@ -110,12 +110,19 @@ if ($photo_path) {
 }
 
 if ($stmt->execute()) {
+    $lastId = $mysqli->insert_id;  // Recupero ultimo ID inserito
     http_response_code(201);
-    echo json_encode(["success" => true, "message" => "Prodotto inserito correttamente"]);
+    echo json_encode([
+        "success" => true,
+        "message" => "Prodotto inserito correttamente",
+        "id" => $lastId,
+        "photo" => $photo_path ?? ""
+    ]);
 } else {
     http_response_code(500);
     echo json_encode(["error" => "Errore nell'inserimento del prodotto"]);
 }
+
 
 $stmt->close();
 $mysqli->close();
