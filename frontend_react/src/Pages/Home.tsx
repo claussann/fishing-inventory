@@ -7,6 +7,7 @@ import Weather from '../components/Weather';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
+import Clock from '../components/Clock';
 
 function Home() {
     const [showModal, setShowModal] = useState(false);
@@ -20,8 +21,13 @@ function Home() {
         <div id='container' className="container" style={{ maxHeight: '100vh' }}>
             <div id='home' className='row justify-content-between border border-secondary m-3 p-3 bg-light'>
                 <div className='col-12 col-md-6 mt-4'>
-                    <div id='title' className='col-12 p-1 text-center'>
-                        <h1>Fishing Inventory</h1>
+                    <div id='title' className='col-12 d-flex justify-content-between p-1 text-center'>
+                        <div className='col-10 text-center'>
+                            <h1>Fishing Inventory</h1>
+                        </div>
+                        <div className='col-2'>
+                            <Clock />
+                        </div>
                     </div>
                     <div className='col-12'>
                         <Buttons id='button' sx={{ width: '100%' }} onClick={() => setShowModal(true)}>Add Item</Buttons>
