@@ -42,6 +42,7 @@ function Inventory() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                body: JSON.stringify({ id })
             })
             if (data.ok) {
                 alert('Item deleted')
