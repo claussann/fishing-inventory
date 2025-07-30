@@ -26,7 +26,7 @@ Node.js and npm: Make sure you have Node.js and the npm package manager installe
 Installation
 Clone the repository:
 
-git clone [your-repository-url]
+git clone [[https://github.com/claussann/fishing-inventory]]
 
 Set up the backend:
 
@@ -77,7 +77,8 @@ Node.js e npm: Assicurati di avere Node.js e il gestore di pacchetti npm install
 Installazione
 Clona il repository:
 
-git clone [url-del-tuo-repository]
+git clone [[https://github.com/claussann/fishing-inventory]]
+
 Configura il backend:
 
 Avvia XAMPP e assicurati che Apache e MySQL siano attivi.
