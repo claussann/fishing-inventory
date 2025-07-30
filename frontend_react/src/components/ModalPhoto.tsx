@@ -19,7 +19,7 @@ function ModalPhoto({ show, title, photo, handleClose }: ModalProps): any {
                 <Modal.Title>{title}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <img id='product' src={`http://localhost:8000/${photo}`} alt='photo' className='fade-in img-fluid' />
+                <img id='product' src={`http://localhost/fishing_backend_php/${photo}`} alt='photo' className='fade-in img-fluid' />
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose} children="Close" />

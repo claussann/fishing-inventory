@@ -3,7 +3,6 @@ import Buttons from '../components/Buttons';
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App.css';
@@ -25,10 +24,15 @@ function Inventory() {
     }
 
     async function fetchItems() {
-        const data = await fetch('http://localhost:8000/upload_item.php')
+        try {
+        const data = await fetch('http://localhost/fishing_backend_php/upload_item.php')
+        console.log('fetch get status', data.status);
         const items = await data.json()
+        console.log('fetch get items', items);
         setProduct(items);
-        return items
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     useEffect(() => {
@@ -37,7 +41,7 @@ function Inventory() {
 
     const deletItem = async (id: number) => {
         try {
-            const data = await fetch('http://localhost:8000/upload_item.php', {
+            const data = await fetch('http://localhost/fishing_backend_php/upload_item.php', {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

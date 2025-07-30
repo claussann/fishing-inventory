@@ -43,7 +43,7 @@ function ModalProd({ show, handleClose }: ModalProps): any {
             formData.append("photo", photo);
         }
         try {
-             const response  = await fetch('http://localhost:8000/upload_item.php', {
+             const response  = await fetch('http://localhost/fishing_backend_php/upload_item.php', {
                 method: 'POST',
                 body: formData,
             })
